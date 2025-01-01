@@ -565,7 +565,7 @@ export default function Index() {
         <Title title="FAQ" />
 
         <div className="max-w-[600px] mx-auto">
-          <details className="mb-8">
+          <details className="mb-8" open>
             <summary className="font-header text-2xl text-theme-green cursor-pointer">
               What should I wear?
             </summary>
@@ -576,7 +576,7 @@ export default function Index() {
             </p>
           </details>
 
-          <details className="mb-8">
+          <details className="mb-8" open>
             <summary className="font-header text-2xl text-theme-green cursor-pointer">
               Will there be parking available?
             </summary>
@@ -585,7 +585,7 @@ export default function Index() {
               don’t worry – there are loads of car parks nearby.
             </p>
           </details>
-          <details className="mb-8">
+          <details className="mb-8" open>
             <summary className="font-header text-2xl text-theme-green cursor-pointer">
               Are children welcome?
             </summary>
@@ -596,7 +596,7 @@ export default function Index() {
               hair down and have some fun!
             </p>
           </details>
-          <details className="mb-8">
+          <details className="mb-8" open>
             <summary className="font-header text-2xl text-theme-green cursor-pointer">
               Will you accommodate my dietary requirements?
             </summary>
@@ -606,7 +606,7 @@ export default function Index() {
               shout ASAP, and we’ll sort it out.
             </p>
           </details>
-          <details className="mb-8">
+          <details className="mb-8" open>
             <summary className="font-header text-2xl text-theme-green cursor-pointer">
               Tell me more about the wedding venue
             </summary>
@@ -628,7 +628,7 @@ export default function Index() {
               evening.
             </p>
           </details>
-          <details className="mb-8">
+          <details className="mb-8" open>
             <summary className="font-header text-2xl text-theme-green cursor-pointer">
               A note on gifts
             </summary>
@@ -641,7 +641,7 @@ export default function Index() {
             </p>
           </details>
 
-          <details className="mb-8">
+          <details className="mb-8" open>
             <summary className="font-header text-2xl text-theme-green cursor-pointer">
               Where can I see photos from the day?
             </summary>
