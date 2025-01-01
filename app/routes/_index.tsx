@@ -559,12 +559,7 @@ export default function Index() {
               sporting lycra!
             </p>
           </details>
-          <details className="mb-8">
-            <summary className="font-header text-2xl text-theme-green cursor-pointer">
-              Will there be parking available?
-            </summary>
-            <p>Yes, there will be ample parking available at the venue.</p>
-          </details>
+
           <details className="mb-8">
             <summary className="font-header text-2xl text-theme-green cursor-pointer">
               Will there be parking available?

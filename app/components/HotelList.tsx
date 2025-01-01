@@ -8,7 +8,7 @@ export default function HotelList({
   }[];
 }) {
   return (
-    <ul className="grid grid-cols-4 gap-4">
+    <ul className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
       {items.map((item, index) => (
         <li className="bg-pink-50 p-4" key={index}>
           <h2 className="text-xl mb-8">
