@@ -488,7 +488,8 @@ export default function Index() {
               {
                 name: "BoHotel",
                 href: "https://www.bohotel.co.uk/",
-                description: "Smart hotel right in center - not many rooms",
+                description:
+                  "Smart hotel right in center - not many rooms. They have various properties BoHotel, BoHouse, BoHome",
               },
               {
                 name: "Sleep Eat Repeat (0.1 miles)",
