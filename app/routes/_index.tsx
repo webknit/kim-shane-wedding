@@ -413,13 +413,13 @@ export default function Index() {
               <br />
               Instead of opting for a traditional one knee, Shane squats low
               before awkwardly trying to extract the sweaty ring box from his
-              jersey pocket. He’s crying, he can’t speak. He whips it out, opens
-              the box and presents it at chest height to to his prospective 5ft
-              wife.
+              jersey pocket. He’s crying, unable to speak properly. It's a weak
+              start to the performance. Nevertheless He whips the box out, and
+              presents it at chest height to to his prospective 5ft wife.
             </p>
 
             <p className="mb-4">
-              Unfortunately it was a windy day and the box had an (overly) large
+              Unfortunately it was a windy day and the box had an overly large
               flap of material that was covering the ring. Instead of Kim
               realising that this was a big life moment, she thought her partner
               was passing out, potentially being sick while holding something
@@ -467,8 +467,9 @@ export default function Index() {
               Booking.com
             </a>{" "}
             - but if you need any advice or a personal recommendation, just give
-            us a shout – we’re happy to help! You’re also just a 20 min train
-            ride from Manchester if you fancy a stay in the City.
+            us a shout – we’re happy to help! We’re also just a 20 min train
+            ride from Manchester if you fancy a stay in the City, last trains
+            will be about 10pm though, and taxi a bit pricy.
           </p>
           <HotelList
             items={[
