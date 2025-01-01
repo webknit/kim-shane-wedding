@@ -4,7 +4,14 @@ import type {
   MetaFunction,
 } from "@remix-run/node";
 import { LinksFunction } from "@remix-run/node";
-import { Form, json, useLoaderData } from "@remix-run/react";
+import {
+  Form,
+  json,
+  Link,
+  Links,
+  useLoaderData,
+  useLocation,
+} from "@remix-run/react";
 import { url } from "node:inspector";
 import HotelList from "~/components/HotelList";
 import ItineraryList from "~/components/ItineraryList";
@@ -57,6 +64,7 @@ export async function action({ request }: ActionFunctionArgs) {
 
 export default function Index() {
   const data = useLoaderData<LoaderData>();
+  let { pathname } = useLocation();
 
   console.log(data.invite);
 
@@ -95,12 +103,15 @@ export default function Index() {
       </div>
 
       <div className="flex items-center justify-center gap-4 p-2 bg-theme-green text-white font-header sticky top-0 z-50">
-        <a href="#rsvp" className="">
-          RSVP
-        </a>
-        <a href="#itinerary" className="">
+        <Link to={`${pathname}#itinerary`} className="">
           Itinerary
-        </a>
+        </Link>
+        <Link to={`${pathname}#accomodation`} className="">
+          Accomodation
+        </Link>
+        <Link to={`${pathname}#faq`} className="">
+          FAQ
+        </Link>
       </div>
 
       <Section>
@@ -266,7 +277,7 @@ export default function Index() {
         </div>
       </Section>
 
-      <Section classes="">
+      <Section classes="" id="itinerary">
         {data.invite?.category === "day" ? (
           <div className="mb-4 max-w-[600px] mx-auto text-center mb-16">
             <img
@@ -283,10 +294,7 @@ export default function Index() {
           </div>
         ) : null}
 
-        <div
-          className="flex relative z-10 gap-8 flex-col md:flex-row md:items-center justify-center mb-12"
-          id="itinerary"
-        >
+        <div className="flex relative z-10 gap-8 flex-col md:flex-row md:items-center justify-center mb-12">
           {data.invite?.category === "day" ? (
             <div className="md:w-1/2 text-center">
               <div className="min-h-[100px] flex items-center justify-center">
@@ -441,7 +449,7 @@ export default function Index() {
         {/* <div className="h-[300px] w-[300px] rounded-full bg-red-500 absolute -left-24 bottom-24 bg-teal-600/20"></div> */}
       </Section>
 
-      <Section classes="">
+      <Section classes="" id="accomodation">
         <div className="relative">
           <img
             src="img/Table and Dining-03 copy.jpg"
@@ -545,7 +553,7 @@ export default function Index() {
         {/* <div className="h-[300px] w-[300px] rounded-full bg-red-500 absolute -left-24 bottom-24 bg-teal-600/20"></div> */}
       </Section>
 
-      <Section classes="bg-green-900/10  text-center">
+      <Section classes="bg-green-900/10  text-center" id="faq">
         <Title title="FAQ" />
 
         <div className="max-w-[600px] mx-auto">
