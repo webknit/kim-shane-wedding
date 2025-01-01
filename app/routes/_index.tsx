@@ -257,21 +257,21 @@ export default function Index() {
             <img
               src="img/28.jpg"
               alt="Remix Logo"
-              className="object-cover w-full h-full shadow"
+              className=" w-full rounded shadow-lg"
             />
           </div>
           <div className="md:w-1/3">
             <img
               src="img/17.jpg"
               alt="Remix Logo"
-              className="object-cover w-full h-full shadow"
+              className="w-full rounded shadow-lg"
             />
           </div>
           <div className="md:w-1/3">
             <img
               src="img/37.jpg"
               alt="Remix Logo"
-              className="object-cover w-full h-full shadow"
+              className="w-full rounded shadow-lg"
             />
           </div>
         </div>
