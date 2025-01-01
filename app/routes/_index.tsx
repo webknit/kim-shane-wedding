@@ -106,6 +106,10 @@ export default function Index() {
         <Link to={`${pathname}#itinerary`} className="">
           Itinerary
         </Link>
+        <Link to={`${pathname}#proposal`} className="">
+          The proposal
+        </Link>
+
         <Link to={`${pathname}#accomodation`} className="">
           Accomodation
         </Link>
@@ -395,7 +399,7 @@ export default function Index() {
         ) : null}
       </Section>
 
-      <Section classes="bg-green-900/10 relative">
+      <Section classes="bg-green-900/10 relative" id="proposal">
         <div className="flex relative z-10 gap-12 flex-col md:flex-row md:items-center">
           <div className="md:w-2/3">
             <img src="img/ring-box.png" alt="" className="w-[50px] mb-4" />
@@ -408,14 +412,14 @@ export default function Index() {
             </p>
 
             <p className="mb-4">
-              Reaching the top, both dripping in sweat. Shane’s knickers were in
-              a twist and he was rapidly losing control of his words, brain and
+              Reaching the top, both dripping in sweat. Shane’s spandex was in a
+              twist and he was rapidly losing control of his words, brain and
               legs.
               <br />
               Instead of opting for a traditional one knee, Shane squats low
               before awkwardly trying to extract the sweaty ring box from his
               jersey pocket. He’s crying, unable to speak properly. It's a weak
-              start to the performance. Nevertheless He whips the box out, and
+              start to the performance. Nevertheless he whips the box out, and
               presents it at chest height to to his prospective 5ft wife.
             </p>
 
@@ -424,7 +428,7 @@ export default function Index() {
               flap of material that was covering the ring. Instead of Kim
               realising that this was a big life moment, she thought her partner
               was passing out, potentially being sick while holding something
-              wet. Lets not forget she's as blind as a bat. Confusion was all
+              wet (lets not forget she's as blind as a bat). Confusion was all
               over her face.
             </p>
 
@@ -606,7 +610,7 @@ export default function Index() {
               Tell me more about the wedding venue
             </summary>
             <p>
-              Ceremony (family only) <br />
+              Ceremony (immediate family only) <br />
               Gawsworth House is a real gem – full of history, romance, and a
               touch of intrigue! This beautiful Cheshire home has been passed
               down through only five families since Norman times and is now the

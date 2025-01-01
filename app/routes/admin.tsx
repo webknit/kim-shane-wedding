@@ -37,7 +37,7 @@ type LoaderData = {
 };
 
 export const loader: LoaderFunction = async ({ request }) => {
-  const invites = await Invite.find({});
+  const invites = await Invite.find({}).sort({ createdAt: -1 });
 
   return json({ invites });
 };
@@ -100,7 +100,7 @@ export default function Index() {
                     htmlFor="default-radio-1"
                     className="ms-2 text-sm font-medium"
                   >
-                    Day
+                    Day/Night
                   </label>
                 </div>
                 <div className="flex items-center">
@@ -170,7 +170,9 @@ export default function Index() {
                 <td className="p-4">
                   <button
                     onClick={() =>
-                      navigator.clipboard.writeText(invite.encodedName)
+                      navigator.clipboard.writeText(
+                        `https://kim-shane-wedding.vercel.app/?name=${invite.encodedName}`
+                      )
                     }
                     className="underline"
                   >
