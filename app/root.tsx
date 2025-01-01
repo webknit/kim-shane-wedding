@@ -1,11 +1,15 @@
 import {
+  json,
   Links,
   Meta,
   Outlet,
   Scripts,
   ScrollRestoration,
 } from "@remix-run/react";
-import type { LinksFunction } from "@remix-run/node";
+
+import type { LinksFunction, LoaderFunctionArgs } from "@remix-run/node";
+
+import mongoose from "mongoose";
 
 import "./tailwind.css";
 
@@ -21,6 +25,22 @@ export const links: LinksFunction = () => [
     href: "https://fonts.googleapis.com/css2?family=Gaegu&display=swap",
   },
 ];
+
+export let loader = async ({ request }: LoaderFunctionArgs) => {
+  mongoose.set("strictQuery", false);
+
+  try {
+    mongoose.connect(
+      `mongodb+srv://${process.env.MONGO_USER}:${process.env.MONGO_PASS}@cluster0.5mkwe.mongodb.net/${process.env.MONGO_DB_NAME}?retryWrites=true&w=majority`
+    );
+
+    console.log("mongoose connected");
+  } catch (error) {
+    console.log(error);
+  }
+
+  return json({ connected: true });
+};
 
 export function Layout({ children }: { children: React.ReactNode }) {
   return (

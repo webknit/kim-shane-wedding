@@ -1,11 +1,17 @@
-import type { LoaderFunction, MetaFunction } from "@remix-run/node";
+import type {
+  ActionFunctionArgs,
+  LoaderFunction,
+  MetaFunction,
+} from "@remix-run/node";
 import { LinksFunction } from "@remix-run/node";
-import { useLoaderData } from "@remix-run/react";
+import { Form, json, useLoaderData } from "@remix-run/react";
 import { url } from "node:inspector";
 import HotelList from "~/components/HotelList";
 import ItineraryList from "~/components/ItineraryList";
 import Section from "~/components/Section";
 import Title from "~/components/Title";
+import { Invite } from "~/schema/invite";
+import { InviteType } from "./admin";
 
 export const meta: MetaFunction = () => {
   return [
@@ -14,16 +20,45 @@ export const meta: MetaFunction = () => {
   ];
 };
 
+type LoaderData = {
+  name: string | null;
+  invite: InviteType;
+};
+
 export const loader: LoaderFunction = async ({ request }) => {
   const url = new URL(request.url);
   const name = url.searchParams.get("name");
-  return { name };
+
+  const invite = await Invite.findOne({ name });
+
+  return json({ name, invite });
 };
 
-export default function Index() {
-  const data = useLoaderData();
+export async function action({ request }: ActionFunctionArgs) {
+  const formData = await request.formData();
+  const accept = (await formData.get("accept")) as string;
+  const email = (await formData.get("email")) as string;
+  const requirements = (await formData.get("requirements")) as string;
+  const song = (await formData.get("song")) as string;
+  const name = (await formData.get("name")) as string;
 
-  console.log(data);
+  await Invite.findOneAndUpdate(
+    { name },
+    {
+      accept: accept === "true" ? true : false,
+      email,
+      requirements,
+      song,
+    }
+  );
+
+  return null;
+}
+
+export default function Index() {
+  const data = useLoaderData<LoaderData>();
+
+  console.log(data.invite);
 
   return (
     <>
@@ -76,90 +111,131 @@ export default function Index() {
           <div className="md:w-1/2">
             <img src="img/dove.jpg" className="w-[50px] mb-2" />
 
-            <Title
-              title={`Hey ${data.name}, we would love for you to join us.`}
-            />
+            {data.name && data.name === data.invite?.name ? (
+              <>
+                <Title
+                  title={`Hey ${data.name}, we would love for you to join us.`}
+                />
 
-            <p className="">
-              We're getting married on September 13, 2025. We'd love for you to
-              join us.
-            </p>
+                <p className="">
+                  We're getting married on September 13, 2025. We'd love for you
+                  to join us.
+                </p>
+              </>
+            ) : (
+              <>
+                <Title title={`Hello there..`} />
+
+                <p>
+                  If you've come here to RSVP and the link we have sent you
+                  isn't showing a form, please contact us.
+                </p>
+              </>
+            )}
           </div>
           <div className="md:w-1/2">
-            <form className="">
-              <fieldset className="mt-8 mb-8">
-                <legend className="mb-2 uppercase font-header">
-                  Are you coming? (required)
-                </legend>
-                <div className="flex mb-2 items-center">
-                  <input
-                    id="default-radio-1"
-                    type="radio"
-                    value="true"
-                    name="are-you-coming"
-                    required
-                    className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
-                  />
-                  <label
-                    htmlFor="default-radio-1"
-                    className="ms-2 text-sm font-medium"
-                  >
-                    Yes I would love to come
-                  </label>
-                </div>
-                <div className="flex items-center">
-                  <input
-                    id="default-radio-2"
-                    type="radio"
-                    value="false"
-                    name="are-you-coming"
-                    className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
-                  />
-                  <label
-                    htmlFor="default-radio-2"
-                    className="ms-2 text-sm font-medium"
-                  >
-                    Sorry I can't make it
-                  </label>
-                </div>
-              </fieldset>
-              <label htmlFor="name" className="block mt-8">
-                <span className="uppercase font-header">
-                  Your Email (optional - we’ll keep you posted for any updates
-                  via this email)
-                </span>
-                <input
-                  type="email"
-                  placeholder="Your email"
-                  className="border border-green-900 rounded-lg p-2 mt-2 block"
-                />
-              </label>
+            {data.name && data.name === data.invite?.name ? (
+              <>
+                {typeof data.invite?.accept === "undefined" ? (
+                  <Form method="post" className="">
+                    <input type="hidden" name="name" value={data.name} />
+                    <fieldset className="mt-8 mb-8">
+                      <legend className="mb-2 uppercase font-header">
+                        Are you coming? (required)
+                      </legend>
+                      <div className="flex mb-2 items-center">
+                        <input
+                          id="default-radio-1"
+                          type="radio"
+                          value="true"
+                          name="accept"
+                          required
+                          className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+                        />
+                        <label
+                          htmlFor="default-radio-1"
+                          className="ms-2 text-sm font-medium"
+                        >
+                          Yes I would love to come
+                        </label>
+                      </div>
+                      <div className="flex items-center">
+                        <input
+                          id="default-radio-2"
+                          type="radio"
+                          value="false"
+                          name="accept"
+                          className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+                        />
+                        <label
+                          htmlFor="default-radio-2"
+                          className="ms-2 text-sm font-medium"
+                        >
+                          Sorry I can't make it
+                        </label>
+                      </div>
+                    </fieldset>
+                    <label htmlFor="name" className="block mt-8">
+                      <span className="uppercase font-header">
+                        Your Email (optional - we’ll keep you posted for any
+                        updates via this email)
+                      </span>
+                      <input
+                        type="email"
+                        placeholder="Your email"
+                        className="border border-green-900 rounded-lg p-2 mt-2 block"
+                        name="email"
+                      />
+                    </label>
 
-              <label htmlFor="name" className="block mt-8">
-                <span className="uppercase font-header">
-                  Any dietary requirements or things we need to know? (Optional)
-                </span>
-                <textarea
-                  className="border border-green-900 rounded-lg p-2 mt-2 block"
-                  name="requirements"
-                ></textarea>
-              </label>
+                    <label htmlFor="name" className="block mt-8">
+                      <span className="uppercase font-header">
+                        Any dietary requirements or things we need to know?
+                        (Optional)
+                      </span>
+                      <textarea
+                        className="border border-green-900 rounded-lg p-2 mt-2 block"
+                        name="requirements"
+                      ></textarea>
+                    </label>
 
-              <label htmlFor="name" className="block mt-8">
-                <span className="uppercase font-header">
-                  What song will make you get up on the dance floor? (Optional)
-                </span>
-                <input
-                  type="text"
-                  className="border border-green-900 rounded-lg p-2 mt-2 block"
-                  name="song"
-                />
-              </label>
+                    <label htmlFor="name" className="block mt-8">
+                      <span className="uppercase font-header">
+                        What song will make you get up on the dance floor?
+                        (Optional, but encouraged)
+                      </span>
+                      <input
+                        type="text"
+                        className="border border-green-900 rounded-lg p-2 mt-2 block"
+                        name="song"
+                      />
+                    </label>
 
-              <button className="bg-green-900 hover:bg-green-800 text-white px-4 py-2 rounded-lg mt-8">
-                Submit
-              </button>
-            </form>
+                    <button className="bg-green-900 hover:bg-green-800 text-white px-4 py-2 rounded-lg mt-8">
+                      Submit
+                    </button>
+                  </Form>
+                ) : (
+                  <>
+                    <p className="font-header mb-4">
+                      Thanks for letting us know! If anything changes contact
+                      Kim or Shane.
+                    </p>
+
+                    <p>You answered</p>
+
+                    <ul>
+                      <li>Accept: {data.invite.accept ? "Yes" : "No"}</li>
+                      <li>Email: {data.invite.email}</li>
+                      <li>Requirements: {data.invite.requirements}</li>
+                      <li>Song: {data.invite.song}</li>
+                    </ul>
+                  </>
+                )}
+              </>
+            ) : (
+              <p></p>
+            )}
           </div>
         </div>
       </Section>
@@ -191,59 +267,64 @@ export default function Index() {
       </Section>
 
       <Section classes="">
-        <div className="mb-4 max-w-[600px] mx-auto text-center mb-16">
-          <img
-            src="img/Table and Dining-30.jpg"
-            className="w-[90px] mb-2 mx-auto"
-          />
-          <Title title="Friday night" />
+        {data.invite?.category === "day" ? (
+          <div className="mb-4 max-w-[600px] mx-auto text-center mb-16">
+            <img
+              src="img/Table and Dining-30.jpg"
+              className="w-[90px] mb-2 mx-auto"
+            />
+            <Title title="Friday night" />
 
-          <p>
-            We’re kicking off the weekend with a special dinner for family and
-            close friends on Friday night – stay tuned for more details coming
-            your way soon!
-          </p>
-        </div>
+            <p>
+              We’re kicking off the weekend with a special dinner for family and
+              close friends on Friday night – stay tuned for more details coming
+              your way soon!
+            </p>
+          </div>
+        ) : null}
+
         <div
           className="flex relative z-10 gap-8 flex-col md:flex-row md:items-center justify-center mb-12"
           id="itinerary"
         >
-          <div className="md:w-1/2 text-center">
-            <div className="min-h-[100px] flex items-center justify-center">
-              <img src="img/church.jpg" className="w-[80px] mb-2 mx-auto" />
-            </div>
+          {data.invite?.category === "day" ? (
+            <div className="md:w-1/2 text-center">
+              <div className="min-h-[100px] flex items-center justify-center">
+                <img src="img/church.jpg" className="w-[80px] mb-2 mx-auto" />
+              </div>
 
-            <Title title="Wedding" />
-            <ItineraryList
-              items={[
-                {
-                  time: "12pm",
-                  description:
-                    "Meet Shane at Picturedrome (SK11 6DU) – let’s kick things off!",
-                },
-                {
-                  time: "1pm",
-                  description:
-                    "Hop on board - we'll whisk you to Gawsworth Hall (transport provided).",
-                },
-                {
-                  time: "2pm",
-                  description:
-                    "It’s officially happening – let’s tie the knot!",
-                },
-                {
-                  time: "3pm",
-                  description:
-                    "Pop the fizz and grab some nibbles – time to celebrate in the beautiful gardens at Gawsworth Hall.",
-                },
-                {
-                  time: "5pm",
-                  description:
-                    "The party continues at The Button Warehouse – we’ve got transport covered to get you there in style!",
-                },
-              ]}
-            />
-          </div>
+              <Title title="Wedding" />
+              <ItineraryList
+                items={[
+                  {
+                    time: "12pm",
+                    description:
+                      "Meet Shane at Picturedrome (SK11 6DU) – let’s kick things off!",
+                  },
+                  {
+                    time: "1pm",
+                    description:
+                      "Hop on board - we'll whisk you to Gawsworth Hall (transport provided).",
+                  },
+                  {
+                    time: "2pm",
+                    description:
+                      "It’s officially happening – let’s tie the knot!",
+                  },
+                  {
+                    time: "3pm",
+                    description:
+                      "Pop the fizz and grab some nibbles – time to celebrate in the beautiful gardens at Gawsworth Hall.",
+                  },
+                  {
+                    time: "5pm",
+                    description:
+                      "The party continues at The Button Warehouse – we’ve got transport covered to get you there in style!",
+                  },
+                ]}
+              />
+            </div>
+          ) : null}
 
           <div className="md:w-1/2 text-center">
             <div className="min-h-[100px] flex items-center justify-center">
@@ -287,20 +368,22 @@ export default function Index() {
           </div>
         </div>
 
-        <div className="mb-4 max-w-[600px] mx-auto text-center mb-16">
-          <img
-            src="img/Food and Meals-02.jpg"
-            className="w-[90px] mb-2 mx-auto"
-          />
-          <Title title="Before you go" />
+        {data.invite?.sunday ? (
+          <div className="mb-4 max-w-[600px] mx-auto text-center mb-16">
+            <img
+              src="img/Food and Meals-02.jpg"
+              className="w-[90px] mb-2 mx-auto"
+            />
+            <Title title="Before you go" />
 
-          <p>
-            Before you say farewell to Macclesfield, swing by Kim & Shane’s for
-            a post-celebration brew and breakfast! We’re at 245 Western Avenue,
-            Macclesfield, SK11 8AW – come join us for a little more fun before
-            you head home.
-          </p>
-        </div>
+            <p>
+              Before you say farewell to Macclesfield, swing by Kim & Shane’s
+              for a post-celebration brew and breakfast! We’re at 245 Western
+              Avenue, Macclesfield, SK11 8AW – come join us for a little more
+              fun before you head home.
+            </p>
+          </div>
+        ) : null}
       </Section>
 
       <Section classes="bg-green-900/10 relative">
