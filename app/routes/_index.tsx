@@ -51,9 +51,6 @@ export default function Index() {
             </h2>
             <h3 className="font-normal text-xl md:text-4xl">13.09.25</h3>
           </div>
-
-          {/* 
-<p>13.09.25</p> */}
         </div>
 
         <img
@@ -62,7 +59,7 @@ export default function Index() {
         />
       </div>
 
-      <div className="flex items-center justify-center gap-4 p-4 bg-theme-green text-white font-header">
+      <div className="flex items-center justify-center gap-4 p-2 bg-theme-green text-white font-header sticky top-0 z-50">
         <a href="#rsvp" className="">
           RSVP
         </a>
@@ -73,7 +70,7 @@ export default function Index() {
 
       <Section>
         <div
-          className="flex relative z-10 gap-8 flex-col md:flex-row md:items-center"
+          className="flex relative z-10 gap-8 flex-col md:flex-row"
           id="rsvp"
         >
           <div className="md:w-1/2">
@@ -90,8 +87,47 @@ export default function Index() {
           </div>
           <div className="md:w-1/2">
             <form className="">
+              <fieldset className="mt-8 mb-8">
+                <legend className="mb-2 uppercase font-header">
+                  Are you coming? (required)
+                </legend>
+                <div className="flex mb-2 items-center">
+                  <input
+                    id="default-radio-1"
+                    type="radio"
+                    value="true"
+                    name="are-you-coming"
+                    required
+                    className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+                  />
+                  <label
+                    htmlFor="default-radio-1"
+                    className="ms-2 text-sm font-medium"
+                  >
+                    Yes I would love to come
+                  </label>
+                </div>
+                <div className="flex items-center">
+                  <input
+                    id="default-radio-2"
+                    type="radio"
+                    value="false"
+                    name="are-you-coming"
+                    className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+                  />
+                  <label
+                    htmlFor="default-radio-2"
+                    className="ms-2 text-sm font-medium"
+                  >
+                    Sorry I can't make it
+                  </label>
+                </div>
+              </fieldset>
               <label htmlFor="name" className="block mt-8">
-                <span className="uppercase">Your Email</span>
+                <span className="uppercase font-header">
+                  Your Email (optional - we’ll keep you posted for any updates
+                  via this email)
+                </span>
                 <input
                   type="email"
                   placeholder="Your email"
@@ -99,42 +135,28 @@ export default function Index() {
                 />
               </label>
 
-              <fieldset className="mt-8 mb-8">
-                <legend className="mb-2 uppercase">Are you coming?</legend>
-                <div className="flex mb-2 items-center">
-                  <input
-                    id="default-radio-1"
-                    type="radio"
-                    value="true"
-                    name="default-radio"
-                    className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
-                  />
-                  <label
-                    htmlFor="default-radio-1"
-                    className="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300"
-                  >
-                    Yes I would love to come
-                  </label>
-                </div>
-                <div className="flex items-center">
-                  <input
-                    checked
-                    id="default-radio-2"
-                    type="radio"
-                    value="false"
-                    name="default-radio"
-                    className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
-                  />
-                  <label
-                    htmlFor="default-radio-2"
-                    className="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300"
-                  >
-                    Sorry I can't make it
-                  </label>
-                </div>
-              </fieldset>
+              <label htmlFor="name" className="block mt-8">
+                <span className="uppercase font-header">
+                  Any dietary requirements or things we need to know? (Optional)
+                </span>
+                <textarea
+                  className="border border-green-900 rounded-lg p-2 mt-2 block"
+                  name="requirements"
+                ></textarea>
+              </label>
 
-              <button className="bg-green-900 hover:bg-green-800 text-white px-4 py-2 rounded-lg">
+              <label htmlFor="name" className="block mt-8">
+                <span className="uppercase font-header">
+                  What song will make you get up on the dance floor? (Optional)
+                </span>
+                <input
+                  type="text"
+                  className="border border-green-900 rounded-lg p-2 mt-2 block"
+                  name="song"
+                />
+              </label>
+
+              <button className="bg-green-900 hover:bg-green-800 text-white px-4 py-2 rounded-lg mt-8">
                 Submit
               </button>
             </form>
@@ -444,8 +466,8 @@ export default function Index() {
         <Title title="FAQ" />
 
         <div className="max-w-[600px] mx-auto">
-          <details className="mb-4">
-            <summary className="font-header text-2xl text-theme-green">
+          <details className="mb-8">
+            <summary className="font-header text-2xl text-theme-green cursor-pointer">
               What should I wear?
             </summary>
             <p>
@@ -454,14 +476,14 @@ export default function Index() {
               sporting lycra!
             </p>
           </details>
-          <details className="mb-4">
-            <summary className="font-header text-2xl text-theme-green">
+          <details className="mb-8">
+            <summary className="font-header text-2xl text-theme-green cursor-pointer">
               Will there be parking available?
             </summary>
             <p>Yes, there will be ample parking available at the venue.</p>
           </details>
-          <details className="mb-4">
-            <summary className="font-header text-2xl text-theme-green">
+          <details className="mb-8">
+            <summary className="font-header text-2xl text-theme-green cursor-pointer">
               Will there be parking available?
             </summary>
             <p>
@@ -469,8 +491,8 @@ export default function Index() {
               don’t worry – there are loads of car parks nearby.
             </p>
           </details>
-          <details className="mb-4">
-            <summary className="font-header text-2xl text-theme-green">
+          <details className="mb-8">
+            <summary className="font-header text-2xl text-theme-green cursor-pointer">
               Are children welcome?
             </summary>
             <p>
@@ -480,8 +502,8 @@ export default function Index() {
               hair down and have some fun!
             </p>
           </details>
-          <details className="mb-4">
-            <summary className="font-header text-2xl text-theme-green">
+          <details className="mb-8">
+            <summary className="font-header text-2xl text-theme-green cursor-pointer">
               Will you accommodate my dietary requirements?
             </summary>
             <p>
@@ -490,8 +512,8 @@ export default function Index() {
               shout ASAP, and we’ll sort it out.
             </p>
           </details>
-          <details className="mb-4">
-            <summary className="font-header text-2xl text-theme-green">
+          <details className="mb-8">
+            <summary className="font-header text-2xl text-theme-green cursor-pointer">
               Tell me more about the wedding venue
             </summary>
             <p>
@@ -512,8 +534,8 @@ export default function Index() {
               evening.
             </p>
           </details>
-          <details className="mb-4">
-            <summary className="font-header text-2xl text-theme-green">
+          <details className="mb-8">
+            <summary className="font-header text-2xl text-theme-green cursor-pointer">
               A note on gifts
             </summary>
             <p>
@@ -525,8 +547,8 @@ export default function Index() {
             </p>
           </details>
 
-          <details className="mb-4">
-            <summary className="font-header text-2xl text-theme-green">
+          <details className="mb-8">
+            <summary className="font-header text-2xl text-theme-green cursor-pointer">
               Where can I see photos from the day?
             </summary>
             <p>
