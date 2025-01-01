@@ -1,0 +1,39 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html,
+body {
+  @apply bg-white dark:bg-gray-950;
+
+  @media (prefers-color-scheme: dark) {
+    color-scheme: dark;
+  }
+
+  font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
+    "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif,
+    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  font-weight: 400;
+}
+
+.body-font {
+}
+
+.text-theme-green {
+  color: #1c5d5a;
+}
+.bg-theme-green {
+  background-color: #1c5d5a;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.font-header {
+  font-family: "Gaegu", serif;
+  font-style: normal;
+  font-weight: 700;
+}
