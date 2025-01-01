@@ -374,13 +374,13 @@ export default function Index() {
               src="img/Food and Meals-02.jpg"
               className="w-[90px] mb-2 mx-auto"
             />
-            <Title title="Before you go" />
+            <Title title="Before you go...." />
 
             <p>
               Before you say farewell to Macclesfield, swing by Kim & Shane’s
-              for a post-celebration brew and breakfast! We’re at 245 Western
-              Avenue, Macclesfield, SK11 8AW – come join us for a little more
-              fun before you head home.
+              for a post-celebration brew and breakfast from 10am on Sunday!
+              We’re at 245 Western Avenue, Macclesfield, SK11 8AW – come join us
+              for a little more fun before you head home.
             </p>
           </div>
         ) : null}
