@@ -234,7 +234,7 @@ export default function Index() {
                       Kim or Shane.
                     </p>
 
-                    <p>You answered</p>
+                    <p>You answered: </p>
 
                     <ul>
                       <li>Accept: {data.invite.accept ? "Yes" : "No"}</li>
