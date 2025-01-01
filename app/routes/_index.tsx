@@ -102,7 +102,7 @@ export default function Index() {
         />
       </div>
 
-      <div className="flex items-center justify-center gap-4 p-2 bg-theme-green text-white font-header sticky top-0 z-50">
+      <div className="flex items-center justify-center gap-4 p-2 bg-theme-green text-white font-header sticky top-0 z-50 text-sm md:text-base">
         <Link to={`${pathname}#itinerary`} className="">
           Itinerary
         </Link>
