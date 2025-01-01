@@ -228,8 +228,9 @@ export default function Index() {
                   </Form>
                 ) : (
                   <>
+                    <Title title={`Thank you for your submission`} />
                     <p className="font-header mb-4">
-                      Thanks for letting us know! If anything changes contact
+                      Cheers for letting us know! If anything changes contact
                       Kim or Shane.
                     </p>
 
