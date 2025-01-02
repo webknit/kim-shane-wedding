@@ -129,6 +129,7 @@ export default function Index() {
             <img
               src="img/Table and Dining-30.jpg"
               className="w-[90px] mb-2 mx-auto"
+              loading="lazy"
             />
             <Title
               title="Friday night"
@@ -147,7 +148,11 @@ export default function Index() {
           {data.invite?.category === "day" ? (
             <div className="md:w-1/2 text-center">
               <div className="min-h-[100px] flex items-center justify-center">
-                <img src="img/church.jpg" className="w-[80px] mb-2 mx-auto" />
+                <img
+                  src="img/church.jpg"
+                  className="w-[80px] mb-2 mx-auto"
+                  loading="lazy"
+                />
               </div>
 
               <Title title="Wedding" subTitle="Gawsworth Hall - SK11 9RN" />
@@ -188,6 +193,7 @@ export default function Index() {
               <img
                 src="img/hand-glass.jpg"
                 className="w-[100px] mb-2 mx-auto"
+                loading="lazy"
               />
             </div>
 
@@ -230,6 +236,7 @@ export default function Index() {
             <img
               src="img/Food and Meals-02.jpg"
               className="w-[90px] mb-2 mx-auto"
+              loading="lazy"
             />
             <Title
               title="Before you go...."
@@ -253,6 +260,7 @@ export default function Index() {
               src="img/1st-pic.jpg"
               alt="Remix Logo"
               className=" w-full rounded shadow-lg"
+              loading="lazy"
             />
           </div>
           <div className="md:w-1/3">
@@ -260,6 +268,7 @@ export default function Index() {
               src="img/17.jpg"
               alt="Remix Logo"
               className="w-full rounded shadow-lg"
+              loading="lazy"
             />
           </div>
           <div className="md:w-1/3">
@@ -267,6 +276,7 @@ export default function Index() {
               src="img/pic2.jpg"
               alt="Remix Logo"
               className="w-full rounded shadow-lg"
+              loading="lazy"
             />
           </div>
         </div>
@@ -278,7 +288,7 @@ export default function Index() {
           id="rsvp"
         >
           <div className="md:w-1/2">
-            <img src="img/dove.jpg" className="w-[50px] mb-2" />
+            <img src="img/dove.jpg" className="w-[50px] mb-2" loading="lazy" />
 
             {data.name && data.name === data.invite?.name ? (
               <>
@@ -411,7 +421,12 @@ export default function Index() {
       <Section classes="bg-green-900/10 relative" id="proposal">
         <div className="flex relative z-10 gap-12 flex-col md:flex-row md:items-center">
           <div className="md:w-2/3">
-            <img src="img/ring-box.png" alt="" className="w-[50px] mb-4" />
+            <img
+              src="img/ring-box.png"
+              alt=""
+              className="w-[50px] mb-4"
+              loading="lazy"
+            />
             <Title title="An energetic proposal" />
 
             <p className="mb-4">
@@ -457,6 +472,7 @@ export default function Index() {
             <img
               src="img/260adeaa-7e33-4332-96bd-ca78c4b0a222.jpeg"
               className="mx-auto mt-8 rounded shadow-lg"
+              loading="lazy"
             />
           </div>
         </div>
@@ -469,6 +485,7 @@ export default function Index() {
           <img
             src="img/Table and Dining-03 copy.jpg"
             className="w-[150px] mb-2"
+            loading="lazy"
           />
           <Title title="Places to Stay" />
 
