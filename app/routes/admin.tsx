@@ -175,6 +175,7 @@ export default function Index() {
             <tr>
               <th className="p-4">Name</th>
               <th className="p-4">Day/Night</th>
+              <th className="p-4">Friday</th>
               <th className="p-4">Sunday</th>
               <th className="p-4">Link</th>
               <th className="p-4">Accept</th>
@@ -188,6 +189,7 @@ export default function Index() {
               <tr key={invite._id}>
                 <td className="p-4">{invite.name}</td>
                 <td className="p-4">{invite.category}</td>
+                <td className="p-4">{invite.friday ? "True" : "false"}</td>
                 <td className="p-4">{invite.sunday ? "True" : "false"}</td>
                 <td className="p-4">
                   <button

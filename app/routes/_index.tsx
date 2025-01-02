@@ -66,8 +66,6 @@ export default function Index() {
   const data = useLoaderData<LoaderData>();
   let { pathname, search } = useLocation();
 
-  console.log(search);
-
   return (
     <>
       <div className="relative flex bg-pink-100 p-8 overflow-hidden lg:pt-16">
@@ -237,8 +235,9 @@ export default function Index() {
 
             <p>
               Before you say farewell to Macclesfield, swing by Kim & Shane’s
-              for a post-celebration brew and breakfast from 9:30am onwards, on
-              Sunday! Come join us for a little more fun before you head home.
+              for a post-celebration brew and breakfast nibble from 9:30am
+              onwards, on Sunday! Come join us for a little more fun before you
+              head home.
             </p>
           </div>
         ) : null}
