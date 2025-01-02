@@ -29,6 +29,7 @@ export interface InviteType {
   song: string;
   category: string;
   sunday: boolean;
+  friday: boolean;
 }
 
 type LoaderData = {
@@ -47,6 +48,7 @@ export async function action({ request }: ActionFunctionArgs) {
   const name = (await formData.get("name")) as string;
   const category = (await formData.get("category")) as string;
   const sunday = (await formData.get("sunday")) as string;
+  const friday = (await formData.get("friday")) as string;
 
   const encodedName = encodeURIComponent(name);
 
@@ -55,6 +57,7 @@ export async function action({ request }: ActionFunctionArgs) {
     encodedName,
     category,
     sunday: sunday === "true" ? true : false,
+    friday: friday === "true" ? true : false,
   });
 
   return null;
@@ -128,6 +131,25 @@ export default function Index() {
                     type="checkbox"
                     value="true"
                     name="sunday"
+                    className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+                  />
+                  <label
+                    htmlFor="default-radio-2"
+                    className="ms-2 text-sm font-medium"
+                  >
+                    Invite
+                  </label>
+                </div>
+              </fieldset>
+
+              <fieldset className="mt-8 mb-8">
+                <legend className="mb-2 uppercase font-header">Friday</legend>
+                <div className="flex items-center">
+                  <input
+                    id="default-radio-2"
+                    type="checkbox"
+                    value="true"
+                    name="friday"
                     className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
                   />
                   <label

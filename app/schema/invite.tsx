@@ -16,6 +16,9 @@ const inviteSchema = new Schema(
     category: {
       type: String,
     },
+    friday: {
+      type: Boolean,
+    },
     sunday: {
       type: Boolean,
     },

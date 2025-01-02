@@ -118,6 +118,158 @@ export default function Index() {
         </Link>
       </div>
 
+      <Section classes="" id="itinerary">
+        <div className="mb-8 text-center">
+          <Title title="Your Itinerary" />
+        </div>
+
+        {data.invite?.friday ? (
+          <div className="mb-4 max-w-[600px] mx-auto text-center mb-16">
+            <img
+              src="img/Table and Dining-30.jpg"
+              className="w-[90px] mb-2 mx-auto"
+            />
+            <Title
+              title="Friday night"
+              subTitle="TBC but in Macc, hopefully ChesterGate Bistro SK11 6DY"
+            />
+
+            <p>
+              We’re kicking off the weekend with a special dinner for family and
+              close friends on Friday night – stay tuned for more details coming
+              your way soon!
+            </p>
+          </div>
+        ) : null}
+
+        <div className="flex relative z-10 gap-8 flex-col md:flex-row md:items-center justify-center mb-12">
+          {data.invite?.category === "day" ? (
+            <div className="md:w-1/2 text-center">
+              <div className="min-h-[100px] flex items-center justify-center">
+                <img src="img/church.jpg" className="w-[80px] mb-2 mx-auto" />
+              </div>
+
+              <Title title="Wedding" subTitle="Gawsworth Hall - SK11 9RN" />
+              <ItineraryList
+                items={[
+                  {
+                    time: "12pm",
+                    description:
+                      "Meet Shane at Picturedrome (SK11 6DU) – let’s kick things off!",
+                  },
+                  {
+                    time: "1pm",
+                    description:
+                      "Hop on board - we'll whisk you to Gawsworth Hall (transport provided).",
+                  },
+                  {
+                    time: "2pm",
+                    description:
+                      "It’s officially happening – let’s tie the knot!",
+                  },
+                  {
+                    time: "3pm",
+                    description:
+                      "Pop the fizz and grab some nibbles – time to celebrate in the beautiful gardens at Gawsworth Hall.",
+                  },
+                  {
+                    time: "5pm",
+                    description:
+                      "The party continues at The Button Warehouse – we’ve got transport covered to get you there in style!",
+                  },
+                ]}
+              />
+            </div>
+          ) : null}
+
+          <div className="md:w-1/2 text-center">
+            <div className="min-h-[100px] flex items-center justify-center">
+              <img
+                src="img/hand-glass.jpg"
+                className="w-[100px] mb-2 mx-auto"
+              />
+            </div>
+
+            <Title title="Party" subTitle="Button Warehouse - SK11 6BA" />
+            <ItineraryList
+              items={[
+                {
+                  time: "6pm",
+                  description:
+                    "Welcome evening guests – the party’s just getting started!",
+                },
+                {
+                  time: "7pm",
+                  description: "Time to feast! Let’s dig in.",
+                },
+                {
+                  time: "8pm",
+                  description: "Get your groove on – it’s boogie time.",
+                },
+                {
+                  time: "9pm",
+                  description: "Cake cutting – let’s make it sweet!",
+                },
+                {
+                  time: "11:20pm",
+                  description: "Last call at the bar – grab your final drink.",
+                },
+                {
+                  time: "11:30pm",
+                  description:
+                    "It’s time to say goodbye to the newlyweds – but don’t worry, the memories will last forever!",
+                },
+              ]}
+            />
+          </div>
+        </div>
+
+        {data.invite?.sunday ? (
+          <div className="mb-4 max-w-[600px] mx-auto text-center mb-16">
+            <img
+              src="img/Food and Meals-02.jpg"
+              className="w-[90px] mb-2 mx-auto"
+            />
+            <Title
+              title="Before you go...."
+              subTitle="Our gaff, 245 Western Avenue SK118AW"
+            />
+
+            <p>
+              Before you say farewell to Macclesfield, swing by Kim & Shane’s
+              for a post-celebration brew and breakfast from 9:30am onwards, on
+              Sunday! Come join us for a little more fun before you head home.
+            </p>
+          </div>
+        ) : null}
+      </Section>
+
+      <Section classes="bg-green-900/10 relative">
+        <div className="flex relative z-10 gap-8 flex-col md:flex-row md:items-center">
+          <div className="md:w-1/3">
+            <img
+              src="img/1st-pic.jpg"
+              alt="Remix Logo"
+              className=" w-full rounded shadow-lg"
+            />
+          </div>
+          <div className="md:w-1/3">
+            <img
+              src="img/17.jpg"
+              alt="Remix Logo"
+              className="w-full rounded shadow-lg"
+            />
+          </div>
+          <div className="md:w-1/3">
+            <img
+              src="img/pic2.jpg"
+              alt="Remix Logo"
+              className="w-full rounded shadow-lg"
+            />
+          </div>
+        </div>
+      </Section>
+
       <Section>
         <div
           className="flex relative z-10 gap-8 flex-col md:flex-row"
@@ -254,154 +406,6 @@ export default function Index() {
             )}
           </div>
         </div>
-      </Section>
-
-      <Section classes="bg-green-900/10 relative">
-        <div className="flex relative z-10 gap-8 flex-col md:flex-row md:items-center">
-          <div className="md:w-1/3">
-            <img
-              src="img/28.jpg"
-              alt="Remix Logo"
-              className=" w-full rounded shadow-lg"
-            />
-          </div>
-          <div className="md:w-1/3">
-            <img
-              src="img/17.jpg"
-              alt="Remix Logo"
-              className="w-full rounded shadow-lg"
-            />
-          </div>
-          <div className="md:w-1/3">
-            <img
-              src="img/37.jpg"
-              alt="Remix Logo"
-              className="w-full rounded shadow-lg"
-            />
-          </div>
-        </div>
-      </Section>
-
-      <Section classes="" id="itinerary">
-        {data.invite?.category === "day" ? (
-          <div className="mb-4 max-w-[600px] mx-auto text-center mb-16">
-            <img
-              src="img/Table and Dining-30.jpg"
-              className="w-[90px] mb-2 mx-auto"
-            />
-            <Title
-              title="Friday night"
-              subTitle="TBC but in Macc, hopefully ChesterGate Bistro SK11 6DY"
-            />
-
-            <p>
-              We’re kicking off the weekend with a special dinner for family and
-              close friends on Friday night – stay tuned for more details coming
-              your way soon!
-            </p>
-          </div>
-        ) : null}
-
-        <div className="flex relative z-10 gap-8 flex-col md:flex-row md:items-center justify-center mb-12">
-          {data.invite?.category === "day" ? (
-            <div className="md:w-1/2 text-center">
-              <div className="min-h-[100px] flex items-center justify-center">
-                <img src="img/church.jpg" className="w-[80px] mb-2 mx-auto" />
-              </div>
-
-              <Title title="Wedding" subTitle="Gawsworth Hall - SK11 9RN" />
-              <ItineraryList
-                items={[
-                  {
-                    time: "12pm",
-                    description:
-                      "Meet Shane at Picturedrome (SK11 6DU) – let’s kick things off!",
-                  },
-                  {
-                    time: "1pm",
-                    description:
-                      "Hop on board - we'll whisk you to Gawsworth Hall (transport provided).",
-                  },
-                  {
-                    time: "2pm",
-                    description:
-                      "It’s officially happening – let’s tie the knot!",
-                  },
-                  {
-                    time: "3pm",
-                    description:
-                      "Pop the fizz and grab some nibbles – time to celebrate in the beautiful gardens at Gawsworth Hall.",
-                  },
-                  {
-                    time: "5pm",
-                    description:
-                      "The party continues at The Button Warehouse – we’ve got transport covered to get you there in style!",
-                  },
-                ]}
-              />
-            </div>
-          ) : null}
-
-          <div className="md:w-1/2 text-center">
-            <div className="min-h-[100px] flex items-center justify-center">
-              <img
-                src="img/hand-glass.jpg"
-                className="w-[100px] mb-2 mx-auto"
-              />
-            </div>
-
-            <Title title="Party" subTitle="Button Warehouse - SK11 6BA" />
-            <ItineraryList
-              items={[
-                {
-                  time: "6pm",
-                  description:
-                    "Welcome evening guests – the party’s just getting started!",
-                },
-                {
-                  time: "7pm",
-                  description: "Time to feast! Let’s dig in.",
-                },
-                {
-                  time: "8pm",
-                  description: "Get your groove on – it’s boogie time.",
-                },
-                {
-                  time: "9pm",
-                  description: "Cake cutting – let’s make it sweet!",
-                },
-                {
-                  time: "11:20pm",
-                  description: "Last call at the bar – grab your final drink.",
-                },
-                {
-                  time: "11:30pm",
-                  description:
-                    "It’s time to say goodbye to the newlyweds – but don’t worry, the memories will last forever!",
-                },
-              ]}
-            />
-          </div>
-        </div>
-
-        {data.invite?.sunday ? (
-          <div className="mb-4 max-w-[600px] mx-auto text-center mb-16">
-            <img
-              src="img/Food and Meals-02.jpg"
-              className="w-[90px] mb-2 mx-auto"
-            />
-            <Title
-              title="Before you go...."
-              subTitle="Our gaff, 245 Western Avenue SK118AW"
-            />
-
-            <p>
-              Before you say farewell to Macclesfield, swing by Kim & Shane’s
-              for a post-celebration brew and breakfast from 10am on Sunday!
-              Come join us for a little more fun before you head home.
-            </p>
-          </div>
-        ) : null}
       </Section>
 
       <Section classes="bg-green-900/10 relative" id="proposal">
