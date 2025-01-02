@@ -536,24 +536,26 @@ export default function Index() {
               {
                 name: "Premier Inn Macclesfield South (1.9 miles)",
                 href: "https://www.premierinn.com/gb/en/hotels/england/cheshire/macclesfield/macclesfield-south-west.html?ARRdd=13&ARRmm=09&ARRyyyy=2025&NIGHTS=1&ROOMS=1&ADULT1=2&CHILD1=0&COT1=0&INTTYP1=DB",
-                description: "Will need a taxi into town from here.",
+                description:
+                  "Will need a taxi into town from here - unless you like walking.",
               },
               {
                 name: "Premier Inn Macclesfield North (2.1 miles)",
                 href: "https://www.premierinn.com/gb/en/hotels/england/cheshire/macclesfield/macclesfield-north.html?ARRdd=13&ARRmm=09&ARRyyyy=2025&NIGHTS=1&ROOMS=1&ADULT1=2&CHILD1=0&COT1=0&INTTYP1=DB",
-                description: "Will need a taxi into town from here.",
+                description:
+                  "Will need a taxi into town from here - unless you like walking even further.",
               },
               {
                 name: "Legh Arms (2.2 miles)",
                 href: "https://legharmsprestbury.pub/",
                 description:
-                  "Swanky Prestbury village pub hotel. Quite remote will need taxi into Macc",
+                  "Swanky Prestbury a small village where all footballers live. Pub Hotel. Quite remote will need taxi into Macc",
               },
               {
                 name: "The Bridge (2.2 miles)",
                 href: "https://www.bridgecheshire.co.uk/",
                 description:
-                  "Swanky Prestbury village pub hotel. Quite remote will need taxi into Macc",
+                  "Same Swank, different hotel. Quite remote will need taxi into Macc",
               },
               {
                 name: "Hollin House Hotel (3.9 miles)",
