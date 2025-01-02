@@ -11,8 +11,17 @@ import { createReadableStreamFromReadable } from "@remix-run/node";
 import { RemixServer } from "@remix-run/react";
 import { isbot } from "isbot";
 import { renderToPipeableStream } from "react-dom/server";
+import { connect } from "mongoose";
 
 const ABORT_DELAY = 5_000;
+
+connect(
+  `mongodb+srv://${process.env.MONGO_USER}:${process.env.MONGO_PASS}@cluster0.5mkwe.mongodb.net/${process.env.MONGO_DB_NAME}?retryWrites=true&w=majority`
+)
+  .then(() => console.log({ mongoDb: "Connected" }))
+  .catch((err) => {
+    console.log({ mongoErr: err });
+  });
 
 export default function handleRequest(
   request: Request,

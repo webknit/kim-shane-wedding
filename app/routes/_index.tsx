@@ -437,7 +437,7 @@ export default function Index() {
               flap of material that was covering the ring. Instead of Kim
               realising that this was a big life moment, she thought her partner
               was passing out, potentially being sick while holding something
-              wet (lets not forget she's as blind as a bat). Confusion was all
+              wet (let's not forget she's as blind as a bat). Confusion was all
               over her face.
             </p>
 
