@@ -117,8 +117,11 @@ export default function Index() {
       </div>
 
       <Section classes="" id="itinerary">
-        <div className="mb-8 text-center">
-          <Title title="Your Itinerary" />
+        <div className="mb-8 text-center max-w-[600px] mx-auto">
+          <h2 className="text-xl font-bold text-theme-green md:text-5xl mb-4">
+            Hey {data.name}, we would love for you to join us.
+          </h2>
+          <Title title={`Itinerary`} />
         </div>
 
         {data.invite?.friday ? (
@@ -279,14 +282,12 @@ export default function Index() {
 
             {data.name && data.name === data.invite?.name ? (
               <>
-                <Title
-                  title={`Hey ${data.name}, we would love for you to join us.`}
-                />
+                <Title title={`RSVP.`} />
 
-                <p className="">
+                {/* <p className="">
                   We're getting married on September 13, 2025. We'd love for you
                   to join us.
-                </p>
+                </p> */}
               </>
             ) : (
               <>
