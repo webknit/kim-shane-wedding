@@ -64,9 +64,9 @@ export async function action({ request }: ActionFunctionArgs) {
 
 export default function Index() {
   const data = useLoaderData<LoaderData>();
-  let { pathname } = useLocation();
+  let { pathname, search } = useLocation();
 
-  console.log(data.invite);
+  console.log(search);
 
   return (
     <>
@@ -103,17 +103,17 @@ export default function Index() {
       </div>
 
       <div className="flex items-center justify-center gap-4 p-2 bg-theme-green text-white font-header sticky top-0 z-50 text-sm md:text-base">
-        <Link to={`${pathname}#itinerary`} className="">
+        <Link to={`${pathname}${search}#itinerary`} className="">
           Itinerary
         </Link>
-        <Link to={`${pathname}#proposal`} className="">
+        <Link to={`${pathname}${search}#proposal`} className="">
           The proposal
         </Link>
 
-        <Link to={`${pathname}#accomodation`} className="">
+        <Link to={`${pathname}${search}#accomodation`} className="">
           Accomodation
         </Link>
-        <Link to={`${pathname}#faq`} className="">
+        <Link to={`${pathname}${search}#faq`} className="">
           FAQ
         </Link>
       </div>
@@ -289,7 +289,10 @@ export default function Index() {
               src="img/Table and Dining-30.jpg"
               className="w-[90px] mb-2 mx-auto"
             />
-            <Title title="Friday night" />
+            <Title
+              title="Friday night"
+              subTitle="TBC but in Macc, hopefully ChesterGate Bistro SK11 6DY"
+            />
 
             <p>
               We’re kicking off the weekend with a special dinner for family and
@@ -306,7 +309,7 @@ export default function Index() {
                 <img src="img/church.jpg" className="w-[80px] mb-2 mx-auto" />
               </div>
 
-              <Title title="Wedding" />
+              <Title title="Wedding" subTitle="Gawsworth Hall - SK11 9RN" />
               <ItineraryList
                 items={[
                   {
@@ -347,7 +350,7 @@ export default function Index() {
               />
             </div>
 
-            <Title title="Party" />
+            <Title title="Party" subTitle="Button Warehouse - SK11 6BA" />
             <ItineraryList
               items={[
                 {
@@ -387,13 +390,15 @@ export default function Index() {
               src="img/Food and Meals-02.jpg"
               className="w-[90px] mb-2 mx-auto"
             />
-            <Title title="Before you go...." />
+            <Title
+              title="Before you go...."
+              subTitle="Our gaff, 245 Western Avenue SK118AW"
+            />
 
             <p>
               Before you say farewell to Macclesfield, swing by Kim & Shane’s
               for a post-celebration brew and breakfast from 10am on Sunday!
-              We’re at 245 Western Avenue, Macclesfield, SK11 8AW – come join us
-              for a little more fun before you head home.
+              Come join us for a little more fun before you head home.
             </p>
           </div>
         ) : null}
@@ -433,8 +438,8 @@ export default function Index() {
             </p>
 
             <p className="mb-4">
-              After a awkward period of time passed with nothing happening Shane
-              said, through floods of tears,{" "}
+              After an awkward period of time passed with nothing happening
+              Shane said, through floods of tears,{" "}
               <strong>“What you saying then?”</strong>. Ever the romantic
               gentleman. Clarity was returning. Raising from the cramp inducing
               squat position, the flap was lifted. The realisation kicked in,
@@ -657,7 +662,7 @@ export default function Index() {
         style={{ backgroundImage: `url("img/37.jpg")` }}
         className="h-screen bg-cover bg-center bg-no-repeat relative overflow-hidden"
       >
-        <div className="bg-green-900 max-w-[500px] text-center absolute bottom-0 left-0 right-0 p-8 mx-auto z-20 -rotate-6 ">
+        <div className="bg-theme-green max-w-[500px] text-center absolute bottom-0 left-0 right-0 p-8 mx-auto z-20 -rotate-6 ">
           <p className="font-header text-white text-3xl uppercase">
             Hope to see you on the 13th
           </p>
