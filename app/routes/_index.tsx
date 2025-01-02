@@ -22,8 +22,8 @@ import { InviteType } from "./admin";
 
 export const meta: MetaFunction = () => {
   return [
-    { title: "New Remix App" },
-    { name: "description", content: "Welcome to Remix!" },
+    { title: "Kim & Shane's Wedding" },
+    { name: "description", content: "13-09-2025" },
   ];
 };
 
