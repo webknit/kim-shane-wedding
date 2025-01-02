@@ -9,7 +9,7 @@ import {
 
 import type { LinksFunction, LoaderFunctionArgs } from "@remix-run/node";
 
-import mongoose from "mongoose";
+// import mongoose from "mongoose";
 
 import "./tailwind.css";
 
