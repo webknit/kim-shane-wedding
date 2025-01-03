@@ -118,7 +118,7 @@ export default function Index() {
 
       <Section classes="" id="itinerary">
         <div className="mb-8 text-center max-w-[600px] mx-auto">
-          <h2 className="text-xl font-bold text-theme-green md:text-5xl mb-4">
+          <h2 className="text-xl font-bold text-theme-green md:text-5xl mb-8">
             Hey {data.name}, we would love for you to join us.
           </h2>
           <Title title={`Itinerary`} />
@@ -211,11 +211,11 @@ export default function Index() {
                 },
                 {
                   time: "8pm",
-                  description: "Get your groove on – it’s boogie time.",
+                  description: "Cake cutting – let’s make it sweet!",
                 },
                 {
-                  time: "9pm",
-                  description: "Cake cutting – let’s make it sweet!",
+                  time: "8:30pm",
+                  description: "Get your groove on – it’s boogie time.",
                 },
                 {
                   time: "11:20pm",
@@ -273,7 +273,7 @@ export default function Index() {
           </div>
           <div className="md:w-1/3">
             <img
-              src="img/pic2.jpg"
+              src="img/37.jpg"
               alt="Remix Logo"
               className="w-full rounded shadow-lg"
               loading="lazy"
@@ -682,7 +682,7 @@ export default function Index() {
       </Section>
 
       <div
-        style={{ backgroundImage: `url("img/37.jpg")` }}
+        style={{ backgroundImage: `url("img/pic2.jpg")` }}
         className="h-screen bg-cover bg-center bg-no-repeat relative overflow-hidden"
       >
         <div className="bg-theme-green max-w-[500px] text-center absolute bottom-0 left-0 right-0 p-8 mx-auto z-20 -rotate-6 ">
