@@ -133,7 +133,7 @@ export default function Index() {
             />
             <Title
               title="Friday night"
-              subTitle="TBC but in Macc, hopefully ChesterGate Bistro SK11 6DY"
+              subTitle="6pm - ChesterGate Bistro SK11 6DY"
             />
 
             <p>
