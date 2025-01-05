@@ -257,17 +257,17 @@ export default function Index() {
         <div className="flex relative z-10 gap-8 flex-col md:flex-row md:items-center">
           <div className="md:w-1/3">
             <img
-              src="img/1st-pic.jpg"
+              src="img/17.jpg"
               alt="Remix Logo"
-              className=" w-full rounded shadow-lg"
+              className="w-full rounded shadow-lg"
               loading="lazy"
             />
           </div>
           <div className="md:w-1/3">
             <img
-              src="img/17.jpg"
+              src="img/1st-pic.jpg"
               alt="Remix Logo"
-              className="w-full rounded shadow-lg"
+              className=" w-full rounded shadow-lg"
               loading="lazy"
             />
           </div>
